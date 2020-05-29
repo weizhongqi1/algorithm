@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var arr = [1, 4, 3, 7, 9, 5, 2, 8];
+
+        //是否需要交换
+        function whether(a, b) {
+            if (a > b) return true;
+            else return false;
+        }
+
+        //交换
+        function exchange(arr, a, b) {
+            var temp = arr[a];
+            arr[a] = arr[b];
+            arr[b] = temp;
+        }
+        //排序
+        function sort(arr) {
+            for (var i = 0; i < arr.length; i ++) {
+                for (var j = 0; j < arr.length - 1 - i; j ++) {
+                    if (whether(arr[j], arr[j + 1])) {
+                        exchange(arr, j, j + 1);
+                    }
+                }
+            }
+
+        }
+        sort(arr);
+        console.log(arr)
+    </script>
+</body>
+
+</html>

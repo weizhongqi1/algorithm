@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var arr = [3, 5, 1, 6, 2, 8];
+        //选择排序  将某个区间的最小值放到最前面
+        function selectSort(arr){
+            if(!arr && arr.length < 0) return ;
+            for(var i = 0; i < arr.length; i ++){
+                var temp = arr[i];  //取i的数
+                var index = i;   //去i的索引
+                for(var j = i; j < arr.length - 1; j ++){
+                    if(arr[j] < temp){
+                        temp = arr[j];
+                        index = j;
+                    }
+                }
+                arr[index] = arr[i];
+                arr[i] = temp;
+            }
+        }
+
+        //快速排序
+        function quickSort(arr){
+            if(!arr && arr.length < 0) return ;
+            function _quickSort(arr, start, end){
+                if(start > end || start > arr.length - 1) return;
+                var low = start, high = end, key = arr[end];
+                while(low < high){
+                    while(low < high && arr[low] <= key) low ++;
+                    arr[high] = arr[low];
+                    while(low < high && arr[high] >= key) high --;
+                    arr[low] = arr[high];
+                }
+                //出来时 low === high
+                arr[low] = key;
+                _quickSort(arr, start, low - 1);
+                _quickSort(arr, low + 1, end);
+            }
+            _quickSort(arr, 0, arr.length - 1);
+        }
+        quickSort(arr);
+        console.log(arr)
+    </script>
+</body>
+</html>

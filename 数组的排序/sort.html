@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var arr = [3, 4, 1, 6, 5, 7];
+        function exchange(arr, i1, i2) {
+            var temp = arr[i1];
+            arr[i1] = arr[i2];
+            arr[i2] = temp;
+        }
+        //选择排序  小的往左边放
+        function selection(arr){
+            if(!arr.length || !Array.isArray(arr)) return arr;
+            var len = arr.length ;
+            for(var i = 0; i < len - 1; i ++){
+                var temp = arr[i];
+                var index = i;
+                for(var j = i + 1; j < len; j ++){
+                    if(arr[j] < temp){
+                        temp = arr[j];
+                        index = j
+                    }
+                }
+               exchange(arr, i, index);
+            }
+        }
+        //快速排序
+        function quickSort(arr){
+            function _quickSort(arr, start, end){
+                if(start > end || start > arr.length - 1) return;
+                var low = start,  high = end,  key = arr[end];
+                while(low < high){
+                    while(low < high && arr[low] <= key) low++;
+                    arr[high] = arr[low];
+                    while(low < high && arr[high] >= key) high --;
+                    arr[low] = arr[high];
+                }
+                //low === high
+                arr[low] = key;
+                _quickSort(arr, start, low - 1);
+                _quickSort(arr, low + 1, end);
+            }
+            _quickSort(arr, 0, arr.length -1 );
+        }
+        quickSort(arr);
+        console.log(arr)
+    </script>
+</body>
+</html>

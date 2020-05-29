@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function Node(value){
+            this.value = value;
+            this.left = null;
+            this.right = null;
+        }
+        var nodea = new Node('a');
+        var nodeb = new Node('b');
+        var nodec = new Node('c');
+        var noded = new Node('d');
+        var nodee = new Node('e');
+        var nodef = new Node('f');
+        var nodeg = new Node('g');
+
+        nodea.left = nodeb;
+        nodea.right = nodec;
+        nodeb.left = noded;
+        nodeb.right = nodee;
+        nodec.left = nodef;
+        nodec.right = nodeg;
+
+        //前序
+        function f1(root){
+            if(root == null) return ;
+            console.log(root.value);
+            f1(root.left);
+            f1(root.right);
+        }
+        f1(nodea);
+
+        //中序
+        function f2(root){
+            if(root == null) return ;
+            f2(root.left);
+            console.log(root.value);
+            f2(root.right);
+        }
+        f2(nodea);
+
+        //后序
+        function f3(root){
+            if(root == null) return ;
+            f3(root.left);
+            f3(root.right);
+            console.log(root.value);
+        }
+        f3(nodea);
+    </script>
+</body>
+</html>
